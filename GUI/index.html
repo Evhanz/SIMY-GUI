@@ -7,6 +7,14 @@
 	<!-- JQuery-->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
 	<script src="../js/jquery-1.11.3.min.js"></script>
+	<!--para reportes morris-->
+	<link rel="stylesheet" href="../js/morris/morris.css">
+	<script src="../js/morris/raphael-min.js">
+	</script>
+	<script src="../js/morris/morris.min.js">
+	</script>
+
+
 	<!-- JS Semantic -->
 	<script src="../js/dist/semantic.js"></script>
 	</head>
@@ -96,16 +104,120 @@
 		
 	
     </div>
-    <div class="thirteen wide column" id="container-principal">
+
 	
 
-	<h1>Bienvenidos</h1>
-    <p>
-    	
-    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque facere praesentium suscipit porro impedit sequi obcaecati explicabo, enim dolore, optio placeat perferendis dignissimos magnam fugiat qui nesciunt maxime dolor ducimus?
-    </p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur natus a ullam, fugit sunt. Eveniet neque, nam doloribus, esse dolorem nisi veniam consectetur placeat, ipsa officiis iure temporibus ratione laboriosam.
-    </div>
+    <div class="thirteen wide column" id="container-principal">
+	
+	<div class="sixteen wide colum" id="header">
+		
+	<span class="text-titulo"> Bienvenido: </span>
+	<span class="avatar"><i style="font-size:15px;"> < </i>
+	<img src="../img/128.jpg" alt="">
+
+	</span>
+	</div>
+	
+	
+
+	<h4 class="ui horizontal header divider">
+	    <i class="bar chart icon"></i>
+	    Datos De ultima 
+	</h4>
+
+	<div class="ui grid" data-styl="block-seccion">
+		<div class="eight wide column">
+			
+
+			<h3>Aca va la tabla de Nuevos Requerimientos</h3>
+			<table class="ui table" id="tableReq">
+			  <thead >
+			    <tr>
+			      <th>Name</th>
+			      <th>Registration Date</th>
+			      <th>E-mail address</th>
+			      <th>Premium Plan</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>John Lilki</td>
+			      <td>September 14, 2013</td>
+			      <td>jhlilk22@yahoo.com</td>
+			      <td>No</td>
+			    </tr>
+			    <tr>
+			      <td>Jamie Harington</td>
+			      <td>January 11, 2014</td>
+			      <td>jamieharingonton@yahoo.com</td>
+			      <td>Yes</td>
+			    </tr>
+			    <tr>
+			      <td>Jill Lewis</td>
+			      <td>May 11, 2014</td>
+			      <td>jilsewris22@yahoo.com</td>
+			      <td>Yes</td>
+			    </tr>
+			  </tbody>
+			</table>
+
+
+
+		</div>
+		<div class="eight wide column" >
+			<h3>Aca va la tabla de ultimos traslados de productos</h3>
+			<table class="ui table" id="tabla-mov-pro">
+			  <thead >
+			    <tr>
+			      <th>Name</th>
+			      <th>Registration Date</th>
+			      <th>E-mail address</th>
+			      <th>Premium Plan</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>John Lilki</td>
+			      <td>September 14, 2013</td>
+			      <td>jhlilk22@yahoo.com</td>
+			      <td>No</td>
+			    </tr>
+			    <tr>
+			      <td>Jamie Harington</td>
+			      <td>January 11, 2014</td>
+			      <td>jamieharingonton@yahoo.com</td>
+			      <td>Yes</td>
+			    </tr>
+			    <tr>
+			      <td>Jill Lewis</td>
+			      <td>May 11, 2014</td>
+			      <td>jilsewris22@yahoo.com</td>
+			      <td>Yes</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+		
+	</div>
+
+	<h4 class="ui horizontal header divider">
+	    <i class="bar chart icon"></i>
+	    Form Barras
+	</h4>
+	<br>
+	
+	<div class="ui grid">
+		<br>
+		<h2>Codigo de barras de las ultimas compras hechas </h2>
+		<div class="sixteen wide colum">
+			<div id="myfirstchart" style="height: 250px;"></div>
+		</div>
+	</div>
+
+
+
+
+
     
 </div>
 
@@ -222,6 +334,31 @@
 
 	});
 
+
+	/*esto es para morris */
+
+
+	new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'myfirstchart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [
+    { year: '2008', value: 20 },
+    { year: '2009', value: 10 },
+    { year: '2010', value: 5 },
+    { year: '2011', value: 5 },
+    { year: '2012', value: 20 }
+  ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'year',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['value'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Value']
+});
+
 </script>
 
 
@@ -235,6 +372,41 @@
 
 <style>
 
+
+.avatar{
+
+	position: relative;
+	float: right;
+
+}
+
+
+.avatar img{
+	cursor: pointer;
+	position: relative;
+	width: 60px;
+	border-radius: 50%;
+	margin-right: 10px;
+	margin-top: 3px;
+	border: 5px solid white; 
+	z-index: 3
+}
+
+.avatar i {
+	background-color: white;
+	position: relative;
+	position: absolute;
+	top: 25px;
+	width: 80px;
+	right: 6px;
+	z-index: 1;
+}
+
+
+
+.ui.inverted.menu{
+	background: #3277BB;
+}
 
 .ui.menu .active.item:hover, 
 .ui.vertical.menu .active.item:hover{
@@ -259,8 +431,32 @@
 
 
 #container-principal{
-	background-color: yellow;
+	/*background-color: yellow;*/
 	
+
+}
+
+
+
+div[data-styl='block-seccion']{
+  /*background-color: blue;*/
+	
+	border: 20px solid rgb(255,255,255);
+	border-radius: 15px;
+
+
+
+}
+
+
+#header{
+	background-color: #20BDB7;
+	color: white;
+	border-bottom: 20px solid #FFFFFF;
+	border-radius: 5px 5px 5px 15px;
+	box-shadow: 11px 11px 13px 2px rgba(201,201,201,1);
+	overflow: hidden;
+	text-shadow: 2px 2px #B6B6B6;
 
 }
 
@@ -307,6 +503,23 @@
 }
 
 
+.text-titulo{
+	font-size: 50px;
+}
+
+
+#tableReq > thead > tr > th{
+
+	background-color: #f43;
+	color: #fff;
+}
+
+
+#tabla-mov-pro > thead > tr > th{
+
+	background-color:  #3277BB;
+	color: #fff;
+}
 
 #avatarUser{
 	position: relative;
